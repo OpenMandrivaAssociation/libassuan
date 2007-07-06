@@ -1,5 +1,5 @@
-%define version 1.0.1
-%define rel 2
+%define version 1.0.2
+%define rel 1
 %define release %mkrel %rel
 
 %define libname %mklibname assuan
@@ -8,7 +8,7 @@ Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
 Version:	%{version}
 Release:	%{release}
-License:	LGPL
+License:	LGPLv3
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/%{name}/%{name}-%{version}.tar.bz2
