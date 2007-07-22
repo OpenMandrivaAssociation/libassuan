@@ -1,5 +1,5 @@
 %define version 1.0.2
-%define rel 1
+%define rel 2
 %define release %mkrel %rel
 
 %define libname %mklibname assuan
@@ -11,8 +11,8 @@ Release:	%{release}
 License:	LGPLv3
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
-Source0:	ftp://ftp.gnupg.org/gcrypt/alpha/%{name}/%{name}-%{version}.tar.bz2
-Source1:	ftp://ftp.gnupg.org/gcrypt/alpha/%{name}/%{name}-%{version}.tar.bz2.sig
+Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
+Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
 %if %mdkversion >= 1020
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires: libpth-devel
@@ -31,6 +31,7 @@ Provides:	libassuan-devel = %{version}-%{release}
 Requires(post):  /sbin/install-info
 Requires(preun): /sbin/install-info
 Obsoletes: %{libname}0-devel < 1.0.1
+Obsoletes: %{libname}0-static-devel < 1.0.1
 
 %description -n %{libname}-devel
 Header files and static library for assuan.
@@ -72,5 +73,3 @@ rm -rf %{buildroot}
 %{_datadir}/aclocal/*.m4
 %{_infodir}/*.info*
 %{_libdir}/lib*.a
-
-
