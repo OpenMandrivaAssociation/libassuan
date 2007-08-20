@@ -28,8 +28,8 @@ authors decided to separated it out to a standalone library.
 Summary:	Header files and static library for assuan
 Group:		Development/C
 Provides:	libassuan-devel = %{version}-%{release}
-Requires(post):  /sbin/install-info
-Requires(preun): /sbin/install-info
+Requires(post):  info-install
+Requires(preun): info-install
 Obsoletes: %{libname}0-devel < 1.0.1
 Obsoletes: %{libname}0-static-devel < 1.0.1
 
