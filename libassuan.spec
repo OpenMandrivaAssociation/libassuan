@@ -1,5 +1,5 @@
-%define version 1.0.2
-%define rel 3
+%define version 1.0.4
+%define rel 1
 %define release %mkrel %rel
 
 %define libname %mklibname assuan
@@ -13,10 +13,10 @@ Group:		System/Libraries
 URL:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
-%if %mdkversion >= 1020
+#%if %mdkversion >= 1020
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires: libpth-devel
-%endif
+#%endif
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description 
@@ -30,8 +30,8 @@ Group:		Development/C
 Provides:	libassuan-devel = %{version}-%{release}
 Requires(post):  info-install
 Requires(preun): info-install
-Obsoletes: %{libname}0-devel < 1.0.1
-Obsoletes: %{libname}0-static-devel < 1.0.1
+Obsoletes: %{libname}0-devel < 1.0.4
+Obsoletes: %{libname}0-static-devel < 1.0.4
 
 %description -n %{libname}-devel
 Header files and static library for assuan.
@@ -49,9 +49,9 @@ export CFLAGS="$RPM_OPT_FLAGS -fPIC"
 rm -rf %{buildroot}
 %makeinstall_std
 
-%if %mdkversion >= 1020
+#%if %mdkversion >= 1020
 %multiarch_binaries %{buildroot}%{_bindir}/libassuan-config
-%endif
+#%endif
 
 %clean
 rm -rf %{buildroot}
@@ -65,9 +65,9 @@ rm -rf %{buildroot}
 %files -n %{libname}-devel
 %defattr(-,root,root)
 %doc ChangeLog AUTHORS NEWS README
-%if %mdkversion >= 1020
+#%if %mdkversion >= 1020
 %multiarch %{multiarch_bindir}/libassuan-config
-%endif
+#%endif
 %{_bindir}/libassuan-config
 %{_includedir}/*.h
 %{_datadir}/aclocal/*.m4
