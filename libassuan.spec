@@ -17,6 +17,7 @@ Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires: libpth-devel
 #%endif
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description 
 This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
