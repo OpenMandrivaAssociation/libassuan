@@ -1,4 +1,4 @@
-%define version 1.0.4
+%define version 1.0.5
 %define rel 1
 %define release %mkrel %rel
 
@@ -13,10 +13,8 @@ Group:		System/Libraries
 URL:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
-#%if %mdkversion >= 1020
 BuildRequires:	multiarch-utils >= 1.0.3
-BuildRequires: libpth-devel
-#%endif
+BuildRequires:	libpth-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description 
@@ -49,9 +47,7 @@ export CFLAGS="$RPM_OPT_FLAGS -fPIC"
 rm -rf %{buildroot}
 %makeinstall_std
 
-#%if %mdkversion >= 1020
 %multiarch_binaries %{buildroot}%{_bindir}/libassuan-config
-#%endif
 
 %clean
 rm -rf %{buildroot}
