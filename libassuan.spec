@@ -1,6 +1,5 @@
-%define version 1.0.5
-%define rel 1
-%define release %mkrel %rel
+%define version 2.0.0
+%define release %mkrel 1
 
 %define libname %mklibname assuan
 
@@ -15,6 +14,7 @@ Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires:	libpth-devel
+Provides:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description 
@@ -38,9 +38,9 @@ Header files and static library for assuan.
 %setup -q
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -fPIC"
-%configure \
-	--with-pth-prefix=%{_prefix}
+#export CFLAGS="$RPM_OPT_FLAGS -fPIC"
+%configure2_5x \
+	--with-pic
 %make
 
 %install
@@ -58,14 +58,16 @@ rm -rf %{buildroot}
 %preun -n %{libname}-devel
 %_remove_install_info assuan.info
 
+%files
+%doc ChangeLog AUTHORS NEWS README
+%{_libdir}/libassuan.so.*
+%{_infodir}/*.info*
+
 %files -n %{libname}-devel
 %defattr(-,root,root)
-%doc ChangeLog AUTHORS NEWS README
-#%if %mdkversion >= 1020
 %multiarch %{multiarch_bindir}/libassuan-config
-#%endif
 %{_bindir}/libassuan-config
 %{_includedir}/*.h
 %{_datadir}/aclocal/*.m4
-%{_infodir}/*.info*
-%{_libdir}/lib*.a
+%{_libdir}/libassuan.so
+%{_libdir}/libassuan.la
