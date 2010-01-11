@@ -14,6 +14,7 @@ Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires:	libpth-devel
+BuildRequires:	%{_lib}gpg-error0
 Provides:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -26,6 +27,7 @@ authors decided to separated it out to a standalone library.
 Summary:	Header files and static library for assuan
 Group:		Development/C
 Provides:	libassuan-devel = %{version}-%{release}
+Requires:	libassuan >= %{version}-%{release}
 Requires(post):  info-install
 Requires(preun): info-install
 Obsoletes: %{libname}0-devel < 1.0.4
@@ -38,7 +40,6 @@ Header files and static library for assuan.
 %setup -q
 
 %build
-#export CFLAGS="$RPM_OPT_FLAGS -fPIC"
 %configure2_5x \
 	--with-pic
 %make
