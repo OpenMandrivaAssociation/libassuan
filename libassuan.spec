@@ -28,6 +28,7 @@ Summary:	Header files and static library for assuan
 Group:		Development/C
 Provides:	libassuan-devel = %{version}-%{release}
 Requires:	libassuan >= %{version}-%{release}
+Requires:	libpth-devel
 Requires(post):  info-install
 Requires(preun): info-install
 Obsoletes: %{libname}0-devel < 1.0.4
@@ -41,7 +42,8 @@ Header files and static library for assuan.
 
 %build
 %configure2_5x \
-	--with-pic
+	--with-pic \
+	--enable-static
 %make
 
 %install
@@ -72,3 +74,4 @@ rm -rf %{buildroot}
 %{_datadir}/aclocal/*.m4
 %{_libdir}/libassuan.so
 %{_libdir}/libassuan.la
+%{_libdir}/libassuan.a
