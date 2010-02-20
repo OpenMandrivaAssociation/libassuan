@@ -1,12 +1,12 @@
-%define version 2.0.0
-%define release %mkrel 4
+%define major 0
 
-%define libname %mklibname assuan
+%define libname %mklibname assuan %{major}
+%define develname %mklibname assuan -d
 
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
-Version:	%{version}
-Release:	%{release}
+Version:	2.0.0
+Release:	%mkrel 4
 License:	LGPLv3
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
@@ -15,7 +15,6 @@ Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires:	libpth-devel
 BuildRequires:	%{_lib}gpg-error-devel
-Provides:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -23,18 +22,29 @@ This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
 package. It used to be included with the latter packages but the
 authors decided to separated it out to a standalone library.
 
-%package -n %{libname}-devel
+%package -n %{libname}
+Summary:	An IPC library for non-persistent servers
+Group:		System/Libraries
+Obsoletes:	libassuan < 2.0.0-4
+Provides:	%{name} = %{version}-%{release}
+
+%description -n %{libname}
+This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
+package. It used to be included with the latter packages but the
+authors decided to separated it out to a standalone library.
+
+%package -n %{develname}
 Summary:	Header files and static library for assuan
 Group:		Development/C
 Provides:	libassuan-devel = %{version}-%{release}
-Requires:	libassuan >= %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 Requires:	libpth-devel
-Requires(post):  info-install
-Requires(preun): info-install
-Obsoletes: %{libname}0-devel < 1.0.4
-Obsoletes: %{libname}0-static-devel < 1.0.4
+Requires(post):	info-install
+Requires(preun):	info-install
+Obsoletes:	%{libname}0-devel < 1.0.4
+Obsoletes:	%{libname}0-static-devel < 1.0.4
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Header files and static library for assuan.
 
 %prep
@@ -55,19 +65,18 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
-%post -n %{libname}-devel
+%post -n %{develname}
 %_install_info assuan.info
 
-%preun -n %{libname}-devel
+%preun -n %{develname}
 %_remove_install_info assuan.info
 
-%files
-%doc ChangeLog AUTHORS NEWS README
-%{_libdir}/libassuan.so.*
-%{_infodir}/*.info*
+%files -n %{libname}
+%{_libdir}/libassuan.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
+%doc ChangeLog AUTHORS NEWS README
 %multiarch %{multiarch_bindir}/libassuan-config
 %{_bindir}/libassuan-config
 %{_includedir}/*.h
@@ -75,3 +84,4 @@ rm -rf %{buildroot}
 %{_libdir}/libassuan.so
 %{_libdir}/libassuan.la
 %{_libdir}/libassuan.a
+%{_infodir}/*.info*
