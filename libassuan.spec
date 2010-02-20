@@ -1,5 +1,5 @@
 %define version 2.0.0
-%define release %mkrel 1
+%define release %mkrel 4
 
 %define libname %mklibname assuan
 
@@ -18,7 +18,7 @@ BuildRequires:	%{_lib}gpg-error-devel
 Provides:	%{libname} = %{version}-%{release}
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
-%description 
+%description
 This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
 package. It used to be included with the latter packages but the
 authors decided to separated it out to a standalone library.
