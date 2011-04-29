@@ -14,7 +14,7 @@ Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	multiarch-utils >= 1.0.3
 BuildRequires:	libpth-devel
-BuildRequires:	%{_lib}gpg-error-devel
+BuildRequires:	libgpg-error-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -77,7 +77,7 @@ rm -rf %{buildroot}
 %files -n %{develname}
 %defattr(-,root,root)
 %doc ChangeLog AUTHORS NEWS README
-%multiarch %{multiarch_bindir}/libassuan-config
+%{multiarch_bindir}/libassuan-config
 %{_bindir}/libassuan-config
 %{_includedir}/*.h
 %{_datadir}/aclocal/*.m4
