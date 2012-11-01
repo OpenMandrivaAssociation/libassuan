@@ -6,14 +6,14 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
 Version:	2.0.3
-Release:	3
+Release:	4
 License:	LGPLv3
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2.sig
 BuildRequires:	multiarch-utils >= 1.0.3
-BuildRequires:	libpth-devel
+BuildRequires:	pth-devel
 BuildRequires:	libgpg-error-devel
 
 %description
