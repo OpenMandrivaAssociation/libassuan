@@ -6,7 +6,7 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
 Version:	2.0.3
-Release:	5
+Release:	6
 License:	LGPLv3
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
@@ -37,7 +37,7 @@ Summary:	Header files and static library for assuan
 Group:		Development/C
 Provides:	libassuan-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}-%{release}
-Requires:	libpth-devel
+Requires:	pth-devel
 Obsoletes:	%{libname}0-devel < 1.0.4
 Obsoletes:	%{libname}0-static-devel < 1.0.4
 
