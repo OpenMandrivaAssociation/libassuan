@@ -6,7 +6,7 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
 Version:	2.0.3
-Release:	4
+Release:	7
 License:	LGPLv3
 Group:		System/Libraries
 URL:		http://www.gnupg.org/
@@ -71,13 +71,15 @@ Header files and static library for assuan.
 %{_libdir}/libassuan.a
 %{_infodir}/*.info*
 
-
 %changelog
+* Thu Jan 31 2013 Per Øyvind Karlsen <abondrov@mandriva.org> 2.0.3-7
+- bump release to handle upgrades
+
 * Thu Jun 14 2012 Andrey Bondrov <abondrov@mandriva.org> 2.0.3-3
 + Revision: 805567
 - Drop some legacy junk
 
-* Sun Feb 12 2012 Per Ã˜yvind Karlsen <peroyvind@mandriva.org> 2.0.3-2
+* Sun Feb 12 2012 Per Øyvind Karlsen <peroyvind@mandriva.org> 2.0.3-2
 + Revision: 773529
 - rebuild for updated libtool .la file references..
 
