@@ -1,2 +1,5 @@
+removed_sources:
+  libassuan-2.0.3.tar.bz2: 2bf4eba3b588758e349976a7eb9e8a509960c3b5
 sources:
-  "libassuan-2.0.3.tar.bz2": 2bf4eba3b588758e349976a7eb9e8a509960c3b5
+  libassuan-2.1.1.tar.bz2: 8bd3826de30651eb8f9b8673e2edff77cd70aca1
+  libassuan-2.1.1.tar.bz2.sig: 860203d9d975e56ed14a9b8b63e1a08093ec8fa4
