@@ -1,10 +1,10 @@
-%define major	0
-%define libname	%mklibname assuan %{major}
-%define devname	%mklibname assuan -d
+%define major 0
+%define libname %mklibname assuan %{major}
+%define devname %mklibname assuan -d
 
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
-Version:	2.2.0
+Version:	2.2.1
 Release:	1
 License:	LGPLv3
 Group:		System/Libraries
