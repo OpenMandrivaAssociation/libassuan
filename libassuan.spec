@@ -4,8 +4,8 @@
 
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
-Version:	2.2.1
-Release:	2
+Version:	2.3.0
+Release:	1
 License:	LGPLv3
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
