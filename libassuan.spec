@@ -4,7 +4,7 @@
 
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
-Version:	2.4.1
+Version:	2.4.2
 Release:	1
 License:	LGPLv3
 Group:		System/Libraries
@@ -66,4 +66,3 @@ Header files and static library for assuan.
 %{_libdir}/libassuan.so
 %{_libdir}/libassuan.a
 %{_infodir}/*.info*
-
