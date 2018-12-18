@@ -68,4 +68,5 @@ Header files and static library for assuan.
 %{_datadir}/aclocal/*.m4
 %{_libdir}/libassuan.so
 %{_libdir}/libassuan.a
+%{_libdir}/pkgconfig/libassuan.pc
 %{_infodir}/*.info*
