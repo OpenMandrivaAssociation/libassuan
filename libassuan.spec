@@ -4,8 +4,8 @@
 
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
-Version:	2.5.1
-Release:	2
+Version:	2.5.2
+Release:	1
 License:	LGPLv3
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
@@ -39,17 +39,17 @@ Provides:	%{name}-devel = %{version}-%{release}
 Header files and static library for assuan.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
 	--with-pic \
 	--enable-static
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %if %{mdvver} <= 3000000
 %multiarch_binaries %{buildroot}%{_bindir}/libassuan-config
