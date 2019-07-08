@@ -5,13 +5,13 @@
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
 Version:	2.5.3
-Release:	1
+Release:	2
 License:	LGPLv3
 Group:		System/Libraries
 Url:		http://www.gnupg.org/
 Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
-BuildRequires:	pth-devel
 BuildRequires:	pkgconfig(gpg-error)
+BuildRequires:	hostname
 
 %description
 This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
@@ -51,18 +51,11 @@ Header files and static library for assuan.
 %install
 %make_install
 
-%if %{mdvver} <= 3000000
-%multiarch_binaries %{buildroot}%{_bindir}/libassuan-config
-%endif
-
 %files -n %{libname}
 %{_libdir}/libassuan.so.%{major}*
 
 %files -n %{devname}
 %doc ChangeLog AUTHORS NEWS README
-%if %{mdvver} <= 3000000
-%{multiarch_bindir}/libassuan-config
-%endif
 %{_bindir}/libassuan-config
 %{_includedir}/*.h
 %{_datadir}/aclocal/*.m4
