@@ -1,17 +1,22 @@
-%define major 0
-%define libname %mklibname assuan %{major}
+%define major 9
+# Fixed after 5.0
+%define oldlibname %mklibname assuan 0
+%define libname %mklibname assuan
 %define devname %mklibname assuan -d
 
 Summary:	Assuan - an IPC library for non-persistent servers
 Name:		libassuan
-Version:	2.5.7
+Version:	3.0.1
 Release:	1
 License:	LGPLv3
 Group:		System/Libraries
-Url:		http://www.gnupg.org/
-Source0:	ftp://ftp.gnupg.org/gcrypt/%{name}/%{name}-%{version}.tar.bz2
+Url:		https://www.gnupg.org/
+Source0:	https://gnupg.org/ftp/gcrypt/libassuan/libassuan-%{version}.tar.bz2
 BuildRequires:	pkgconfig(gpg-error)
 BuildRequires:	hostname
+BuildSystem:	autotools
+BuildOption:	--with-pic
+BuildOption:	--enable-static
 
 %description
 This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
@@ -23,6 +28,7 @@ Summary:	An IPC library for non-persistent servers
 Group:		System/Libraries
 Obsoletes:	libassuan < 2.0.0-4
 Provides:	%{name} = %{version}-%{release}
+%rename %{oldlibname}
 
 %description -n %{libname}
 This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
@@ -37,19 +43,6 @@ Provides:	%{name}-devel = %{version}-%{release}
 
 %description -n %{devname}
 Header files and static library for assuan.
-
-%prep
-%autosetup -p1
-
-%build
-%configure \
-	--with-pic \
-	--enable-static
-
-%make_build
-
-%install
-%make_install
 
 %files -n %{libname}
 %{_libdir}/libassuan.so.%{major}*
