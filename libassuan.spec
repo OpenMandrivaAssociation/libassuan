@@ -1,6 +1,4 @@
 %define major 9
-# Fixed after 5.0
-%define oldlibname %mklibname assuan 0
 %define libname %mklibname assuan
 %define devname %mklibname assuan -d
 
@@ -28,7 +26,6 @@ Summary:	An IPC library for non-persistent servers
 Group:		System/Libraries
 Obsoletes:	libassuan < 2.0.0-4
 Provides:	%{name} = %{version}-%{release}
-%rename %{oldlibname}
 
 %description -n %{libname}
 This is the IPC library used by GnuPG 1.9, gpgme and the old newpg
